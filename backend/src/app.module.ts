@@ -4,21 +4,22 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskController } from './task/task.controller';
 import { TaskModule } from './task/task.module';
+import { Task } from './task/models/task.model';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'postgres',
       host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'conuhack',
-      autoLoadEntities: true,
+      port: 5432,
+      username: 'username',
+      password: 'password',
+      database: 'default_database',
+      entities: [Task],
       synchronize: true,
     }),
     TaskModule,
   ],
-  controllers: [AppController, TaskController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
