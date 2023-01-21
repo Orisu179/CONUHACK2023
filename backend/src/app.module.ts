@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TaskController } from './task/task.controller';
 import { TaskModule } from './task/task.module';
-import { Task } from './task/models/task.model';
+import { Task } from './task/task.model';
 @Module({
   imports: [
     TypeOrmModule.forRoot({

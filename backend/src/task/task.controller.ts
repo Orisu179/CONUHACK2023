@@ -3,7 +3,7 @@ import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ServiceUnavailableException } from '@nestjs/common';
 import { CreateTaskInput } from './dto/create-task.input';
 import { UpdateTaskInput } from './dto/update-task.input';
-import { Task } from './models/task.model';
+import { Task } from './task.model';
 import { TaskService } from './task.service';
 
 @Controller('task')
