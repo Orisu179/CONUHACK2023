@@ -30,6 +30,7 @@ export class TaskService {
     task.title = createTaskInput.title;
     task.desc = createTaskInput.desc;
     task.isDone = false;
+    task.user = createTaskInput.user;
     return await this.tasksRepository.save(task);
   }
 
@@ -48,6 +49,9 @@ export class TaskService {
     }
     if (updateTaskInput.isDone !== undefined) {
       task.isDone = updateTaskInput.isDone;
+    }
+    if (updateTaskInput.user !== undefined) {
+      task.user = updateTaskInput.user;
     }
     return await this.tasksRepository.save(task);
   }

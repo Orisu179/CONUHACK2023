@@ -30,7 +30,7 @@ export class TaskController {
 
   @Post(':id')
   async updateTask(
-    @Param('id') id: number,
+    @Param('id') _: number,
     @Body() updateTaskInput: UpdateTaskInput,
   ): Promise<Task> {
     const task = await this.tasksService.updateTask(updateTaskInput);
