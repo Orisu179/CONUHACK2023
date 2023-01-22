@@ -5,5 +5,4 @@ export interface CreateUserInput {
   password: string;
   name: any;
   role: Role;
-  team: number;
 }

@@ -1,4 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Public } from 'src/auth/constants';
+import { CreateUserInput } from './dto/createuser.input';
 import { UserDto } from './dto/user.dto';
 import { UserService } from './user.service';
 
@@ -18,5 +20,11 @@ export class UserController {
       team: user.team,
       tasks: user.tasks,
     } as UserDto;
+  }
+
+  @Public()
+  @Post()
+  async createUser(@Body() user: CreateUserInput) {
+    return this.userService.create(user);
   }
 }

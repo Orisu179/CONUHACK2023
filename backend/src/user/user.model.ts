@@ -31,9 +31,9 @@ export class User {
   @Column()
   role: Role;
 
-  @ManyToOne(() => Team, (team) => team.hires)
-  team: Team[];
+  @ManyToOne(() => Team, (team) => team.hires, { nullable: true })
+  team: Team;
 
-  @OneToMany(() => Task, (task) => task.user)
+  @OneToMany(() => Task, (task) => task.user, { nullable: true })
   tasks: Task[];
 }
