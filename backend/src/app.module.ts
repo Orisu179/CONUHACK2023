@@ -3,11 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskModule } from './task/task.module';
-import { Task } from './task/task.model';
-import { User } from './user/user.model';
 import { UserModule } from './user/user.module';
 import { TeamModule } from './team/team.module';
-import { Team } from './team/team.model';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -17,12 +15,13 @@ import { Team } from './team/team.model';
       username: 'username',
       password: 'password',
       database: 'default_database',
-      entities: [Task, User, Team],
+      autoLoadEntities: true,
       synchronize: true,
     }),
     TaskModule,
     UserModule,
     TeamModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

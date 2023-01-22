@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Task } from 'src/task/task.model';
+import { Team } from 'src/team/team.model';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 export enum Role {
   NewHire,
@@ -22,4 +30,10 @@ export class User {
 
   @Column()
   role: Role;
+
+  @ManyToOne(() => Team, (team) => team.hires)
+  team: Team[];
+
+  @OneToMany(() => Task, (task) => task.user)
+  tasks: Task[];
 }

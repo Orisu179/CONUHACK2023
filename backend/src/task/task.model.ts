@@ -1,20 +1,24 @@
+import { Team } from 'src/team/team.model';
 import { User } from 'src/user/user.model';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Task {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: true })
-  title?: string;
+  @Column()
+  title: string;
 
-  @Column({ nullable: true })
-  desc?: string;
+  @Column()
+  desc: string;
 
-  @OneToOne(() => User)
-  user?: User;
+  @ManyToOne(() => Team, (team) => team.tasks)
+  team: Team;
+
+  @ManyToOne(() => User, (user) => user.tasks)
+  user: User;
 
   @Column({ default: false })
-  isDone?: boolean;
+  isDone: boolean;
 }
