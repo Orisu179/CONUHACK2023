@@ -11,6 +11,7 @@ import TaskService from './TaskService';
 
 const TaskList = (isManager : bool) => {
   const [task, setTask] = useState([])
+  const [userType, setUserType] = useState(isManager)  //true = manager, false = intern
   const [newTitle, setNewTitle] = useState('')
   const [newDesc, setNewDesc] = useState('')
   const [newUser, setNewUser] = useState('')
@@ -42,6 +43,20 @@ const TaskList = (isManager : bool) => {
     setNewUser(event.target.value)
   }
 
+  const handleUserTypeChange = () => {
+    setUserType(!userType)
+  }
+
+  const handleDoneChange = (id) =>{
+    setIsDone(!isDone)
+    const taskObject = {
+      title: newTitle,
+      desc: newDesc,
+      user: newUser,
+      isDone: NewisDone
+    }
+    TaskService.update(id, taskObject)
+  }
   const addTask = (event) =>{
     event.preventDefault()
     const taskObject = {
@@ -61,9 +76,9 @@ const TaskList = (isManager : bool) => {
         setIsDone(false)
       })
   }
-  if(isManager)
+  if(userType)
     return (
-    <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2}>
       <TextField color="primary" label="task name" variant="outlined" onChange={handleTitleChange} />
       <TextField color="primary" label="description" variant="outlined" onChange={handleDescChange} />
       <Button variant="outlined" color="secondary" onClick={addTask}>Add</Button>
@@ -74,8 +89,8 @@ const TaskList = (isManager : bool) => {
     )
 
   else
-    //return ( <Task result={result} />)
-  return (<Typography variant="h1"> hello world </Typography>)
+    return ( <Task result={result} isManager={false} />)
+  //return (<Typography variant="h1"> hello world </Typography>)
 }
 
 export default TaskList;

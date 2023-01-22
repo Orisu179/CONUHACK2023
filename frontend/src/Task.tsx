@@ -11,22 +11,16 @@ import axios from "axios";
 import TaskList from "./TaskList";
 import TaskService from "./TaskService";
 
-const Task = props => {
+const Task = ({ result, isManager }) => {
   const [user, setUserName] = ('')
-  const [isManager, setManager] = (props.isManager)
-  const [isDone, setIsDone] = (false);
+  const [isManager, setManager] = (isManager)
 
   const filtered = props.result.filter((result.user === user))
-  const ButtonActive = (isDone : bool) => {
-    if(!isDone)
+  const ButtonActive = (isDone : bool, id : int) => {
+    const [Done, setDone] = (isDone)
       return(
-              <Button onClick> Finished </Button>
+              <Button onClick={TaskList.handleDoneChange(id)} onClick={setDone(!isDone)} disabled={isDone}> Finished </Button>
       )
-    else
-        return (
-                <Button disabled> Finished </Button>
-
-        )
   }
 
   const changeState = (event) => {
@@ -72,7 +66,7 @@ const Task = props => {
                         <TableCell>{row.title}</TableCell>
                         <TableCell>{row.desc}</TableCell>
                         <TableCell>{row.isDone}</TableCell>
-                        <ButtonActive isDone={row.isDone} />
+                        <ButtonActive isDone={row.isDone} id={row.id} />
                       </TableRow>
                       ))}
             </TableBody>
