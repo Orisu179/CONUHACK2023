@@ -39,7 +39,7 @@ const Task = ({ result, isManager }) => {
             </TableHead>
             <TableBody>
               {result.map((row) => (
-                      <TableRow key=row.id>
+                      <TableRow key={row.id}>
                         <TableCell>{row.title}</TableCell>
                         <TableCell>{row.desc}</TableCell>
                         <TableCell>{row.isDone}</TableCell>
