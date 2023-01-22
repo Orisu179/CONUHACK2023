@@ -1,5 +1,4 @@
-import { Team } from 'src/team/team.model';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum Role {
   NewHire,
@@ -23,7 +22,4 @@ export class User {
 
   @Column()
   role: Role;
-
-  @ManyToOne((type) => Team, (team) => team.hires)
-  team: Team;
 }
