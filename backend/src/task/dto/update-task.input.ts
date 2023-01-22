@@ -1,6 +1,9 @@
-import { CreateTaskInput } from './create-task.input';
+import { UserDto } from 'src/user/dto/user.dto';
 
-export class UpdateTaskInput extends CreateTaskInput {
+export interface UpdateTaskInput {
   id: number;
+  title?: string;
+  desc?: string;
+  user?: UserDto;
   isDone?: boolean;
 }

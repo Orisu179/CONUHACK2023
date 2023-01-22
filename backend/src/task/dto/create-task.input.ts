@@ -1,7 +1,7 @@
-import { User } from 'src/user/user.model';
+import { UserDto } from 'src/user/dto/user.dto';
 
-export class CreateTaskInput {
-  title?: string;
-  desc?: string;
-  user?: User;
+export interface CreateTaskInput {
+  title: string;
+  desc: string;
+  user: UserDto;
 }

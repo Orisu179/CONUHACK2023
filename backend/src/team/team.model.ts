@@ -1,4 +1,3 @@
-import { Task } from 'src/task/task.model';
 import { User } from 'src/user/user.model';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -10,12 +9,9 @@ export class Team {
   @Column()
   teamName: string;
 
-  @Column()
+  @Column({ default: 0.0 })
   teamRating: number;
 
   @OneToMany(() => User, (user) => user.team)
   hires: User[];
-
-  @OneToMany(() => Task, (task) => task.team)
-  tasks: Task[];
 }
