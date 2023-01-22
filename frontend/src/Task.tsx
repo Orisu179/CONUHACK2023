@@ -45,6 +45,9 @@ const Task = ({ result, isManager }) => {
                         <TableCell>{row.isDone}</TableCell>
                       </TableRow>
                       ))}
+              <TextField color="primary" label="task name" variant="outlined" onChange={handleTitleChange} />
+              <TextField color="primary" label="description" variant="outlined" onChange={handleDescChange} />
+              <Button variant="outlined" color="secondary" onClick={addTask}>Add</Button>
             </TableBody>
           </Table>
     )
@@ -55,7 +58,6 @@ const Task = ({ result, isManager }) => {
               <TableRow>
                 <TableCell>Task</TableCell>
                 <TableCell>Description</TableCell>
-                <TableCell>Finished</TableCell>
                 <TableCell> </TableCell>
                 <TableCell> Rating </TableCell>
               </TableRow>
@@ -65,7 +67,6 @@ const Task = ({ result, isManager }) => {
                       <TableRow key=row.id>
                         <TableCell>{row.title}</TableCell>
                         <TableCell>{row.desc}</TableCell>
-                        <TableCell>{row.isDone}</TableCell>
                         <ButtonActive isDone={row.isDone} id={row.id} />
                       </TableRow>
                       ))}

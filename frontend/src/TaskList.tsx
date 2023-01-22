@@ -78,14 +78,7 @@ const TaskList = (isManager : bool) => {
   }
   if(userType)
     return (
-            <Stack direction="row" spacing={2}>
-      <TextField color="primary" label="task name" variant="outlined" onChange={handleTitleChange} />
-      <TextField color="primary" label="description" variant="outlined" onChange={handleDescChange} />
-      <Button variant="outlined" color="secondary" onClick={addTask}>Add</Button>
-      <Box component="span" sx={{ p:2 }}>
-        <Typography variant="p">what you have entered is {newTitle} and {newDesc}</Typography>
-      </Box>
-    </Stack>
+            <Task result={result} isManager={true} />
     )
 
   else
